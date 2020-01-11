@@ -33,7 +33,7 @@ class CreateUsersTable extends AbstractMigration
     {
         $table = $this->table('users');
         $table->addColumn('fname', 'string')
-            ->addColumn('sname', 'string')
+            ->addColumn('lname', 'string')
             ->create();
     }
 }
