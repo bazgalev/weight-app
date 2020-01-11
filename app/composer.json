@@ -24,7 +24,6 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "fzaninotto/faker": "^1.9",
         "monolog/monolog": "^1.24",
         "php-di/php-di": "^6.0",
         "robmorgan/phinx": "^0.11.4",
@@ -32,6 +31,7 @@
         "slim/slim": "^4.1"
     },
     "require-dev": {
+        "fzaninotto/faker": "^1.9",
         "phpunit/phpunit": "^7.5"
     },
     "config": {
