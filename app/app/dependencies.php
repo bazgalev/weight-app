@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use DI\ContainerBuilder;
+use Envms\FluentPDO\Query;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
@@ -24,5 +25,27 @@ return function (ContainerBuilder $containerBuilder) {
 
             return $logger;
         },
+        PDO::class => function (ContainerInterface $c) {
+            $config = $c->get('db');
+
+            $adapter = $config['adapter'];
+            $host = $config['host'];
+            $dbname = $config['name'];
+            $port = $config['port'];
+            $charset = $config['charset'];
+
+
+            $dsn = "$adapter:host=$host;dbname=$dbname;port=$port;charset=$charset";
+//            var_dump($dsn);die;
+            $dbh = new PDO($dsn, $config['user'], $config['pass']);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $dbh;
+        },
+        Query::class => function (ContainerInterface $c) {
+            /** @var PDO $pdo */
+            $pdo = $c->get(PDO::class);
+            return new Query($pdo);
+        }
     ]);
 };
