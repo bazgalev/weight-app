@@ -1,8 +1,13 @@
 <?php
 
 return [
-    'dbname' => getenv('DB_NAME'),
     'host' => getenv('DB_HOST'),
+    'name' => getenv('DB_NAME'),
     'user' => getenv('DB_USER'),
-    'password' => getenv('DB_PASSWORD')
+    'pass' => getenv('DB_PASSWORD'),
+    'port' => getenv('DB_PORT'),
+    'adapter' => 'mysql',
+    'charset' => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix' => '',
 ];
