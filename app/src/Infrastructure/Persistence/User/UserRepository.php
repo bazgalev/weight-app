@@ -38,7 +38,7 @@ class UserRepository implements UserRepositoryInterface
      * @inheritDoc
      * @throws \Envms\FluentPDO\Exception
      */
-    public function findUserOfId(int $id): User
+    public function finById(int $id): User
     {
         $user = $this->fluent
             ->from(self::TABLE, $id)
